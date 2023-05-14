@@ -164,3 +164,32 @@ addBookToLibrary(Title, Author, Pages, Read);
 // Reset the form after successful submission
 document.getElementById("add-book").reset();
 }
+
+// Validate the form with the Constraint Validation API
+const constraintValidationAPI = (() => {
+const valTitle = document.getElementById("Title");
+
+valTitle.addEventListener("input", () => {
+   valTitle.setCustomValidity("");
+   valTitle.checkValidity();
+});
+
+valTitle.addEventListener("invalid", () => {
+   if (valTitle.value === "") {
+      valTitle.setCustomValidity("TItle cannot be blank!");
+   }
+});
+
+const valAuthor = document.getElementById("Author");
+
+valAuthor.addEventListener("input", () => {
+   valAuthor.setCustomValidity("");
+   valAuthor.checkValidity();
+});
+
+valAuthor.addEventListener("invalid", () => {
+   if (valAuthor.value === "") {
+      valAuthor.setCustomValidity("Author cannot be blank!");
+   }
+});
+})();
